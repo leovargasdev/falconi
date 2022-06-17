@@ -1,0 +1,43 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  
+  label {
+    font-size: 1rem;
+    line-height: 1.25rem;
+    font-weight: 600;
+
+    margin-bottom: 5px;
+  }
+
+  input {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--tertiary);
+
+    padding: 12px 16px;
+    border-radius: 10px;
+    background: transparent;
+    border: 1px solid rgba(0,0,0,0.12);
+
+    outline-color: var(--secondary);
+
+    &::placeholder {
+      color: #999;
+    }
+
+    &.error {
+      outline: none;
+      border: 2px solid var(--error);
+    }
+  }
+
+  span {
+    font-size: 0.75rem;
+    line-height: 1rem;
+    color: var(--error);
+
+    margin-top: 2px;
+    padding-left: 2px;
+  }
+}

@@ -1,24 +1,22 @@
 import Head from 'next/head'
-import { GetStaticProps, NextPage } from 'next'
+import { NextPage } from 'next'
+
+import { Slide } from 'components/Slide'
+import { FormContact } from 'components/FormContact'
 
 import styles from 'styles/home.module.scss'
 
-type PageProps = {
-  title: string
-}
-
-const HomePage: NextPage<PageProps> = ({ title }) => (
+const HomePage: NextPage = () => (
   <div className={styles.container}>
     <Head>
       <title>Falconi</title>
     </Head>
-    <h1>{title}</h1>
+
+    <div className={styles.content}>
+      <FormContact />
+      <Slide />
+    </div>
   </div>
 )
-
-export const getStaticProps: GetStaticProps = async () => {
-  const title = 'NextJS Boilerplate'
-  return { props: { title } }
-}
 
 export default HomePage
