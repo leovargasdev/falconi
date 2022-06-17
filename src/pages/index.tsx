@@ -10,7 +10,7 @@ type PageProps = {
 const HomePage: NextPage<PageProps> = ({ title }) => (
   <div className={styles.container}>
     <Head>
-      <title>NextJS Boilerplate</title>
+      <title>Falconi</title>
     </Head>
     <h1>{title}</h1>
   </div>
