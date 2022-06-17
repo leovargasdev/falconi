@@ -45,22 +45,11 @@ export const FormContact = () => {
             name="company"
             label="Nome da empresa"
             placeholder="digite o nome da empresa"
-            error={useFormMethods.formState.errors?.company}
           />
 
-          <Input
-            name="email"
-            label="Email"
-            placeholder="contato@email.com"
-            error={useFormMethods.formState.errors?.email}
-          />
+          <Input name="email" label="Email" placeholder="contato@email.com" />
 
-          <Input
-            name="phone"
-            label="Telefone"
-            placeholder="__ ____________"
-            error={useFormMethods.formState.errors?.phone}
-          />
+          <Input name="phone" label="Telefone" placeholder="__ ____________" />
 
           <Input
             name="employees"
