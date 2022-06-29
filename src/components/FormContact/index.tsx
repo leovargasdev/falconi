@@ -1,4 +1,6 @@
+import axios from 'axios'
 import * as yup from 'yup'
+import { useState } from 'react'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useForm, FormProvider } from 'react-hook-form'
 
@@ -18,13 +20,22 @@ const schema = yup
   .required()
 
 export const FormContact = () => {
+  const [loading, setLoading] = useState(false)
+
   const useFormMethods = useForm({
     resolver: yupResolver(schema),
     mode: 'all'
   })
 
-  const onSubmit = data => {
-    console.log('onSubmit', data)
+  const onSubmit = async data => {
+    setLoading(true)
+    try {
+      await axios.post('/api/send-company', data)
+      useFormMethods.reset()
+    } catch (err) {
+      console.log(err)
+    }
+    setLoading(false)
   }
 
   return (
@@ -52,13 +63,18 @@ export const FormContact = () => {
           <Input name="phone" label="Telefone" placeholder="__ ____________" />
 
           <Input
+            type="number"
             name="employees"
             label="Número funcionários"
             placeholder="1-50"
           />
 
-          <button type="submit" disabled={!useFormMethods.formState.isValid}>
-            enviar
+          <button
+            type="submit"
+            disabled={!useFormMethods.formState.isValid}
+            className={loading ? styles.loading : ''}
+          >
+            {!loading && 'enviar'}
           </button>
         </form>
       </FormProvider>

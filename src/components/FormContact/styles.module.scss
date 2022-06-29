@@ -20,6 +20,10 @@
   padding-left: 50px;
 
   button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     color: #fff;
     font-size: 1rem;
     font-weight: 700;
@@ -29,10 +33,33 @@
     border-radius: 10px;
     background: var(--secondary);
 
+    transition: all 0.4s;
+
     &:disabled {
       color: #808080;
       background: var(--disabled);
       cursor: not-allowed;
+    }
+
+    &.loading {
+      background: rgba(117, 69, 229, 0.85);
+
+      &::before {
+        content: '';
+  
+        width: 30px;
+        height: 30px;
+  
+        border-radius: 50%;
+        border: 2px solid transparent;
+        border-top: 2px solid white;
+        animation: rotateSpinning .7s infinite linear;
+      }
+    }
+
+    @keyframes rotateSpinning {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(359deg); }
     }
   }
 }
@@ -57,3 +84,10 @@
     color: var(--quartenary);
   }
 }
+
+// .loading {
+//   width: 32px;
+// 	height: 32px;
+// 	clear: both;
+// 	margin: 20px auto;
+// }
