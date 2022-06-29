@@ -27,15 +27,28 @@
 Esse projeto foi desenvolvido durante uma _livecoding_ na [Twitch.tv](https://www.twitch.tv/leovargasdev).
 O protótipo desse website foi desenvolvido pelo [**Guilherme Ortiz**](https://www.linkedin.com/in/guiortiz/), [clique aqui](https://www.figma.com/file/YsQR9rpghOdBzxsYWtZFHs?node-id=14%3A1977) para abrir o protótipo no figma.
 
-Dependências usadas no projeto:
+Os dados desse formulário estão sendo salvos em uma planilha do Google, [clique aqui para acessar](https://docs.google.com/spreadsheets/d/1MjBBSWXMP_nDMRSI9_m8Cmy6DGqwRJ9aQo1ghe9WVfc/edit#gid=0).
+
+## 🚀 Tecnologias
 
 -  [Next.js](https://nextjs.org/)
 -  [React Hook Form](https://react-hook-form.com/)
 -  [Yup](https://github.com/jquense/yup)
 -  [Sass](https://sass-lang.com/)
 -  [TypeScript](https://www.typescriptlang.org/)
+-  [Google Spreadsheet](https://www.npmjs.com/package/google-spreadsheet)
+-  [Axios](https://www.npmjs.com/package/axios)
 
 Também foi adicionado as ferramentas [**ESLint**](https://eslint.org/) e [**Prettier**](https://prettier.io/) para aumentar a produtividade e auxiliar a manter um padrão de código.
+
+## 📔 Conhecimentos abordados
+
+- [x] Validações no formulário com a lib **Yup**
+- [x] Armazenando os dados em uma planilha do Google
+- [x] Uso da `apiRoute` do **NextJS**(camada node do framework)
+- [x] Animação de `loading`
+- [ ] Carrousel de imagens
+- [ ] Mascara com regExp
 
 ## 📥 Instalação e execução
 
