@@ -1,3 +1,4 @@
+/* eslint-disable multiline-ternary */
 import axios from 'axios'
 import * as yup from 'yup'
 import { useState } from 'react'
@@ -21,6 +22,7 @@ const schema = yup
 
 export const FormContact = () => {
   const [loading, setLoading] = useState(false)
+  const [isSuccess, setIsSuccess] = useState(false)
 
   const useFormMethods = useForm({
     resolver: yupResolver(schema),
@@ -32,6 +34,7 @@ export const FormContact = () => {
     try {
       await axios.post('/api/send-company', data)
       useFormMethods.reset()
+      setIsSuccess(true)
     } catch (err) {
       console.log(err)
     }
@@ -42,42 +45,61 @@ export const FormContact = () => {
     <div className={styles.container}>
       <img src="/logo.png" alt="Logo Falconi" />
 
-      <FormProvider {...useFormMethods}>
-        <form
-          className={styles.form}
-          onSubmit={useFormMethods.handleSubmit(onSubmit)}
-        >
-          <div className={styles.form__info}>
-            <h3>Qual é a sua empresa?</h3>
-            <p>Vamos montar a solução ideal para seu negócio </p>
-          </div>
+      {isSuccess ? (
+        <div className={styles.success}>
+          <img src="/undraw_mail_sent.png" alt="" />
 
-          <Input
-            name="company"
-            label="Nome da empresa"
-            placeholder="digite o nome da empresa"
-          />
+          <h3>Cadastro recebido!</h3>
 
-          <Input name="email" label="Email" placeholder="contato@email.com" />
+          <p>
+            Agora nosso time vai entrar em contato para apresentar a proposta
+            ideal para sua empresa.
+          </p>
 
-          <Input name="phone" label="Telefone" placeholder="__ ____________" />
-
-          <Input
-            type="number"
-            name="employees"
-            label="Número funcionários"
-            placeholder="1-50"
-          />
-
-          <button
-            type="submit"
-            disabled={!useFormMethods.formState.isValid}
-            className={loading ? styles.loading : ''}
+          <span>agora é só aguardar :)</span>
+        </div>
+      ) : (
+        <FormProvider {...useFormMethods}>
+          <form
+            className={styles.form}
+            onSubmit={useFormMethods.handleSubmit(onSubmit)}
           >
-            {!loading && 'enviar'}
-          </button>
-        </form>
-      </FormProvider>
+            <div className={styles.form__info}>
+              <h3>Qual é a sua empresa?</h3>
+              <p>Vamos montar a solução ideal para seu negócio </p>
+            </div>
+
+            <Input
+              name="company"
+              label="Nome da empresa"
+              placeholder="digite o nome da empresa"
+            />
+
+            <Input name="email" label="Email" placeholder="contato@email.com" />
+
+            <Input
+              name="phone"
+              label="Telefone"
+              placeholder="__ ____________"
+            />
+
+            <Input
+              type="number"
+              name="employees"
+              label="Número funcionários"
+              placeholder="1-50"
+            />
+
+            <button
+              type="submit"
+              disabled={!useFormMethods.formState.isValid}
+              className={loading ? styles.loading : ''}
+            >
+              {!loading && 'enviar'}
+            </button>
+          </form>
+        </FormProvider>
+      )}
     </div>
   )
 }

@@ -1,8 +1,16 @@
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
 import styles from './styles.module.scss'
 
 export const Slide = () => {
   const [activeItem, setActiveItem] = useState(0)
+
+  const images = [
+    '/undraw_organizing_projects.png',
+    '/undraw_project_completed.png',
+    '/undraw_projections.png'
+  ]
+
+  const activeImage = useMemo(() => images[activeItem], [images, activeItem])
 
   return (
     <div className={styles.container}>
@@ -12,7 +20,7 @@ export const Slide = () => {
         tratadas e transformadas em realidade.
       </h2>
 
-      <img src="/undraw_organizing_projects.png" alt="" />
+      <img src={activeImage} />
 
       <div className={styles.controler}>
         <button

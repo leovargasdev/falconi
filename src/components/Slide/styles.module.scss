@@ -26,19 +26,20 @@
 
     width: 100%;
     max-width: 440px;
-    margin: 16px 0 25px;
+    margin-top: 16px;
   }
 
   img {
     width: 415px;
     height: auto;
+  
+    margin: auto 0;
   }
 }
 
 .controler {
   display: flex;
   justify-content: space-between;
-  margin-top: auto;
 
   width: 66px;
   height: 14px;
