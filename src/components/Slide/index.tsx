@@ -4,13 +4,16 @@ import styles from './styles.module.scss'
 export const Slide = () => {
   const [activeItem, setActiveItem] = useState(0)
 
-  const images = [
+  const images: string[] = [
     '/undraw_organizing_projects.png',
     '/undraw_project_completed.png',
     '/undraw_projections.png'
   ]
 
-  const activeImage = useMemo(() => images[activeItem], [images, activeItem])
+  const activeImage: string = useMemo(
+    () => images[activeItem],
+    [images, activeItem]
+  )
 
   return (
     <div className={styles.container}>
