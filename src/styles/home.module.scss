@@ -53,6 +53,8 @@
   }
 
   > button {
+    display: none;
+
     color: #fff;
     font-size: 1rem;
     font-weight: 700;
@@ -74,8 +76,10 @@
 
     border-radius: 24px;
 
-    > img {
+    > img, > button {
       display: block;
     }
+
+    
   }
 }
