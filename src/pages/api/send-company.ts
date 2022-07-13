@@ -14,13 +14,8 @@ const endpoint = async (request: NextApiRequest, response: NextApiResponse) => {
 
   const data = request.body
 
-  const currentDate = new Date()
-  const day = currentDate.getDate()
-  const month = String(currentDate.getMonth() + 1).padStart(2, '0')
-  const year = currentDate.getFullYear()
-
   await sheet.addRow({
-    data: day + '/' + month + '/' + year,
+    data: new Date().toLocaleDateString(),
     empresa: data.company,
     email: data.email,
     telefone: data.phone,

@@ -20,7 +20,12 @@ const schema = yup
   })
   .required()
 
-export const FormContact = () => {
+interface FormContactProps {
+  isOpenMobile: boolean
+  onClose: () => void
+}
+
+export const FormContact = ({ isOpenMobile, onClose }: FormContactProps) => {
   const [loading, setLoading] = useState(false)
   const [isSuccess, setIsSuccess] = useState(false)
 
@@ -42,7 +47,7 @@ export const FormContact = () => {
   }
 
   return (
-    <div className={styles.container}>
+    <div className={styles.container} data-open={String(isOpenMobile)}>
       <img src="/logo.png" alt="Logo Falconi" />
 
       {isSuccess ? (
@@ -56,7 +61,7 @@ export const FormContact = () => {
             ideal para sua empresa.
           </p>
 
-          <span>agora é só aguardar :)</span>
+          <span onClick={onClose}>agora é só aguardar :)</span>
         </div>
       ) : (
         <FormProvider {...useFormMethods}>
